@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "aks-data-005-2"
+		},
+		"ls_sqldb_password": {
+			"value": ""
+		},
+		"ls_std5_accountKey": {
+			"value": ""
+		},
+		"ls_sqldb_properties_typeProperties_server": {
+			"value": "aks-98.database.windows.net"
+		},
+		"ls_sqldb_properties_typeProperties_database": {
+			"value": "aks-sqldb"
+		},
+		"ls_sqldb_properties_typeProperties_userName": {
+			"value": "Satya-98"
+		},
+		"ls_std5_properties_typeProperties_url": {
+			"value": "https://std5.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
