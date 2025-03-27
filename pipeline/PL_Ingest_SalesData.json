@@ -68,36 +68,6 @@
 				]
 			},
 			{
-				"name": "Notify_Success",
-				"type": "WebActivity",
-				"dependsOn": [
-					{
-						"activity": "Copy_SalesData_To_ADLS",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"method": "POST",
-					"headers": {
-						"Content-Type": "application/json"
-					},
-					"url": "https://teams.live.com/l/invite/FAA4jiI0toRAmdzcgI",
-					"body": {
-						"text": "✅ Data ingestion pipeline completed successfully. Data is now available in ADLS."
-					}
-				}
-			},
-			{
 				"name": "Notify_Failure",
 				"type": "WebHook",
 				"dependsOn": [
@@ -121,6 +91,34 @@
 					},
 					"body": {
 						"text": "❌ Data ingestion pipeline failed. Please investigate immediately."
+					},
+					"timeout": "00:10:00"
+				}
+			},
+			{
+				"name": "Notify_Success",
+				"type": "WebHook",
+				"dependsOn": [
+					{
+						"activity": "Copy_SalesData_To_ADLS",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://teams.live.com/l/invite/FAA4jiI0toRAmdzcgI",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"body": {
+						"text": "✅ Data ingestion pipeline completed successfully. Data is now available in ADLS."
 					},
 					"timeout": "00:10:00"
 				}
